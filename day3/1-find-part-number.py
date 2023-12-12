@@ -1,6 +1,3 @@
-import logging
-
-logging.basicConfig(level=logging.INFO, format='%(message)s')
 inputLineList = []
 
 totalSum = 0
@@ -71,4 +68,4 @@ for charLineListIndex, charLineList in enumerate(inputLineList):
                 totalSum += int(runningDigit)
                 runningDigit = ''
 
-logging.info(totalSum)
+print(totalSum)

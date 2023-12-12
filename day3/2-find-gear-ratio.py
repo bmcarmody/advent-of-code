@@ -1,4 +1,3 @@
-import logging
 import functools
 import operator
 
@@ -103,8 +102,6 @@ for charLineListIndex, charLineList in enumerate(inputLineList):
         if len(digits) != 2:
             continue
 
-        logging.info(digits)
-
         totalSum += functools.reduce(operator.mul, digits)
 
-logging.info(totalSum)
+print(totalSum)
