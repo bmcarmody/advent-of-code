@@ -1,7 +1,3 @@
-import logging
-
-logging.basicConfig(level=logging.INFO, format='%(message)s')
-
 bag_contents = {'red': 12, 'green': 13, 'blue': 14}
 runningTotal = 0
 
@@ -34,4 +30,4 @@ with open('./input.txt', 'r') as file:
 
         runningTotal += totalPower
 
-logging.info(runningTotal)
+print(runningTotal)
