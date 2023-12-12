@@ -1,7 +1,3 @@
-import logging
-
-logging.basicConfig(level=logging.INFO, format='%(message)s')
-
 totalCards = 199
 totalPoints = 0
 copyCardsDict = {i: 0 for i in range(totalCards)}
@@ -43,4 +39,4 @@ totalPoints += totalCards
 for value in copyCardsDict.values():
     totalPoints += value
 
-logging.info(totalPoints)
+print(totalPoints)

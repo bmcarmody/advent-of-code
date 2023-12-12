@@ -1,7 +1,3 @@
-import logging
-
-logging.basicConfig(level=logging.INFO, format='%(message)s')
-
 totalPoints = 0
 
 with open('./input.txt', 'r') as file:
@@ -26,4 +22,4 @@ with open('./input.txt', 'r') as file:
 
         totalPoints += lineScore
 
-logging.info(totalPoints)
+print(totalPoints)
