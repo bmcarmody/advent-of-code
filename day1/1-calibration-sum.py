@@ -1,7 +1,3 @@
-import logging
-
-logging.basicConfig(level=logging.INFO, format='%(message)s')
-
 runningTotal = 0
 
 with open('./input.txt', 'r') as file:
@@ -20,8 +16,8 @@ with open('./input.txt', 'r') as file:
 
             if line[left].isdigit() and line[right].isdigit():
                 break
-            
+
         concatLeftRight = str(line[left]) + str(line[right])
         runningTotal += int(concatLeftRight)
 
-logging.info(runningTotal)
+print(runningTotal)

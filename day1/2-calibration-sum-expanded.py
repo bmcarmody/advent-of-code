@@ -1,9 +1,6 @@
-import logging
-
-logging.basicConfig(level=logging.INFO, format='%(message)s')
-
 runningTotal = 0
-numbers = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+numbers = ["one", "two", "three", "four",
+           "five", "six", "seven", "eight", "nine"]
 number_dict = {word: index + 1 for index, word in enumerate(numbers)}
 
 with open('./input.txt', 'r') as file:
@@ -26,19 +23,19 @@ with open('./input.txt', 'r') as file:
                 leftNumber = int(line[leftIndex])
                 rightNumber = int(line[rightIndex])
                 break
-            
+
         for num in numbers:
             firstIndex = line.find(num)
             lastIndex = line.rfind(num)
-            
+
             if firstIndex != -1 and firstIndex < leftIndex:
                 leftIndex = firstIndex
                 leftNumber = number_dict[num]
             if lastIndex != -1 and lastIndex > rightIndex:
                 rightIndex = lastIndex
                 rightNumber = number_dict[num]
-            
+
         concatLeftRight = str(leftNumber) + str(rightNumber)
         runningTotal += int(concatLeftRight)
 
-logging.info(runningTotal)
+print(runningTotal)
