@@ -36,11 +36,9 @@ with open('./input.txt', 'r') as file:
 def getDestination(currentValue, currentMap):
     destination = currentValue
     for newDestination, source, rangeToSpan in currentMap:
-        if currentValue >= source and currentValue <= source + rangeToSpan:
-            destination = currentValue - source + newDestination
+        if currentValue >= newDestination and currentValue <= newDestination + rangeToSpan:
+            destination = currentValue - newDestination + source
             break
-
-    return destination
 
 
 for seed in seedToLocationDict.keys():
