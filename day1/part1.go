@@ -15,7 +15,7 @@ func main() {
 		log.Fatalf("Error getting current directory: %s", err)
 	}
 
-	filePath := filepath.Join(currentDir, "day1", "part1.txt")
+	filePath := filepath.Join(currentDir, "day1", "day1.txt")
 	file, err := os.Open(filePath)
 
 	if err != nil {
