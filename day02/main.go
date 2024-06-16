@@ -83,6 +83,51 @@ func part1() {
 	fmt.Printf("Total Score: %d\n", totalScore)
 }
 
+var turnToResultMap = map[string]TurnResult{
+	"X": TurnResult(Lost),
+	"Y": TurnResult(Draw),
+	"Z": TurnResult(Won),
+}
+
+// Just a reverse of losingResultMap
+// Easier to create a new map than to implement
+// value -> key logic considering how small the map is
+var winningResultMap = map[TurnType]TurnType{
+	TurnType(Rock):     TurnType(Scissors),
+	TurnType(Paper):    TurnType(Rock),
+	TurnType(Scissors): TurnType(Paper),
+}
+
+func part2() {
+	totalScore := 0
+
+	calculateScore := func(line string) {
+		trimmedLine := strings.TrimSpace(line)
+		parts := strings.Split(trimmedLine, " ")
+		var opponentTurn TurnType = opponentGuideMap[parts[0]]
+		myTurnResult := turnToResultMap[parts[1]]
+		var myTurn TurnType
+
+		switch myTurnResult {
+		case Won:
+			myTurn = losingResultMap[opponentTurn]
+		case Lost:
+			myTurn = winningResultMap[opponentTurn]
+		default:
+			myTurn = opponentTurn
+		}
+
+		myScore := turnTypeScoreMap[myTurn]
+		roundScore := myScore + turnResultScoreMap[myTurnResult]
+		totalScore += roundScore
+	}
+
+	utils.ReadFile(dataFilePath, calculateScore)
+
+	fmt.Printf("New Total Score: %d\n", totalScore)
+}
+
 func main() {
 	part1()
+	part2()
 }
