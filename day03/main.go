@@ -37,6 +37,49 @@ func part1() {
 
 	utils.ReadFile(dataFilePath, parseLine)
 
+	fmt.Printf("Priority Sum: %d\n", prioritySum)
+}
+
+func part2() {
+	var prioritySum int = 0
+	var lines []string
+
+	parseLine := func(line string) {
+		strings.TrimSpace(line)
+		lines = append(lines, line)
+
+		if len(lines) != 3 {
+			return
+		}
+
+		var overlappingChar rune
+
+		for i := 0; i < len(lines); i++ {
+			charMap := make(map[rune]bool)
+
+			for _, char := range lines[0] {
+				charMap[char] = true
+			}
+
+			for _, char1 := range lines[1] {
+				if charMap[char1] {
+					for _, char2 := range lines[2] {
+						if char1 == char2 {
+							overlappingChar = char1
+
+							break
+						}
+					}
+				}
+			}
+		}
+
+		prioritySum += charToPriority[overlappingChar]
+		lines = nil
+	}
+
+	utils.ReadFile(dataFilePath, parseLine)
+
 	fmt.Printf("Priority Sum: %d", prioritySum)
 }
 
@@ -47,4 +90,5 @@ func main() {
 	}
 
 	part1()
+	part2()
 }
