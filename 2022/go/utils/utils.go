@@ -31,3 +31,11 @@ func CheckError(message string, err error) {
 		log.Fatalf("\"%s\" %s", message, err)
 	}
 }
+
+func MaxInt(x, y int) int {
+	if x > y {
+		return x
+	}
+
+	return y
+}
